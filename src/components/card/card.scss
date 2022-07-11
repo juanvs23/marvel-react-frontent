@@ -1,0 +1,73 @@
+@import '../../mixin.scss';
+.car-container {
+	margin: 10px;
+	padding: 10px;
+	min-height: 185px;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	@include card(10px, black, white);
+
+	h2 {
+		font-size: 25px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+}
+.gradeContainer {
+	transition: 0.5s;
+	.grade {
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 23px;
+		font-weight: 700;
+		padding-top: 0;
+		transition: 0.3s;
+	}
+	button {
+		appearance: none;
+		background: transparent;
+		border: none;
+		font-size: 20px;
+		cursor: pointer;
+		display: block;
+		width: 100%;
+		padding: 10px;
+		font-weight: 700;
+		position: relative;
+		&:after {
+			content: '';
+			transition: 0.5s;
+			width: 10px;
+			height: 10px;
+			border-bottom: 1px solid black;
+			display: block;
+			border-right: 1px solid black;
+			transform: rotate(45deg);
+			position: absolute;
+			right: 15px;
+			top: 12px;
+		}
+		&.active {
+			&:after {
+				transform: rotate(223deg);
+				top: 15px;
+			}
+		}
+	}
+}
+.car-container a {
+	color: white;
+	margin: 0 auto;
+	display: block;
+	max-width: 100px;
+	text-align: center;
+	padding: 7px;
+	min-width: 100px;
+	text-decoration: none;
+	transition: 0.3s;
+	@include card(5px, rgba(0, 0, 0, 0.082), rgb(2, 71, 117));
+}
+.car-container a:hover {
+	background: rgb(1, 36, 59);
+}

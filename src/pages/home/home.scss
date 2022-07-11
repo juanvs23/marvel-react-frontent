@@ -1,0 +1,42 @@
+@import '../../mixin.scss';
+.students {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	.card {
+		width: 25%;
+		min-width: 25%;
+
+		list-style-type: none;
+	}
+	@media (max-width: 767px) {
+		.card {
+			width: 100%;
+			min-width: 100%;
+		}
+	}
+	@media (min-width: 768px) {
+		.card {
+			width: 50%;
+			min-width: 50%;
+		}
+	}
+	@media (min-width: 992px) {
+		.card {
+			width: 33%;
+			min-width: 33%;
+		}
+	}
+	@media (min-width: 992px) {
+		.card {
+			width: 33%;
+			min-width: 33%;
+		}
+	}
+	@media (min-width: 1200px) {
+		.card {
+			width: 25%;
+			min-width: 25%;
+		}
+	}
+}

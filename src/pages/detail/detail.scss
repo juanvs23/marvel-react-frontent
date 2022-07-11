@@ -1,0 +1,20 @@
+@import '../../mixin.scss';
+
+.detail-container {
+	@include card(10px, rgba(0, 0, 0, 0.322), white);
+	color: #333;
+	min-height: 70vh;
+	min-width: 90vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.datails {
+	width: 95%;
+	a {
+		text-decoration: none;
+		font-weight: 700;
+		color: #333;
+	}
+}
