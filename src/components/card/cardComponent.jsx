@@ -23,7 +23,7 @@ export default function CardComponent({ title, id, color, grade }) {
 			transition={{ duration: 1 }}
 			className='card'>
 			<div className='car-container'>
-				<h2 style={{ color: color !== 'Color' ? color : '#333' }}>{title}</h2>
+				<h2 style={{ color: color === 'White' ? '#333' : color }}>{title}</h2>
 				<div className='gradeContainer'>
 					<button
 						onClick={() => setOpen((open) => !open)}
