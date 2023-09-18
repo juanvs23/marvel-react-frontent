@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './card.scss';
 import gradeColor from '../../utils/gradeColor';
+import utils from '@/utils';
 
-export default function CardComponent({ title, id, color, grade }) {
+export default function CardComponent({ cardData }) {
 	const [open, setOpen] = useState(false);
-	const showGrade = open ? (
+	const {
+		id,
+		title,
+		thumbnail: { path, extension },
+		resourceURI,
+		type,
+	} = cardData;
+	console.log(path);
+	/* const showGrade = open ? (
 		<motion.div
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
@@ -15,24 +24,22 @@ export default function CardComponent({ title, id, color, grade }) {
 			style={{ color: gradeColor(grade.toFixed(2)) }}>
 			{grade.toFixed(2)}
 		</motion.div>
-	) : null;
+	) : null; */
 	return (
 		<motion.article
 			initial={{ y: 200, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 1 }}
 			className='card'>
-			<div className='car-container'>
-				<h2 style={{ color: color === 'White' ? '#333' : color }}>{title}</h2>
-				<div className='gradeContainer'>
-					<button
-						onClick={() => setOpen((open) => !open)}
-						className={`${open ? 'active' : ''}`}>
-						Show grade
-					</button>
-					<AnimatePresence>{showGrade}</AnimatePresence>
-				</div>
-				<Link to={`/student/${id}`}>Leer más</Link>
+			<div className={`car-container ${type}`}>
+				<Link to={`/detail/${id}`}>
+					<img
+						src={`${utils.changehttpTohttps(path)}.${extension}`}
+						alt={title}
+						className='img-background'
+					/>
+					<h2>{title}</h2>
+				</Link>
 			</div>
 		</motion.article>
 	);

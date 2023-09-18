@@ -1,17 +1,54 @@
 @import '../../mixin.scss';
 .car-container {
 	margin: 10px;
-	padding: 10px;
+	overflow: hidden;
 	min-height: 185px;
+	position: relative;
+	&::before {
+		content: '';
+		width: 100%;
+		position: absolute;
+		display: block;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.3);
+		z-index: 3;
+	}
+	a {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	&.characters {
+		aspect-ratio: 211/179;
+	}
+	&:hover {
+		.img-background {
+			transform: scale(1.5) rotate(26deg);
+		}
+	}
+	.img-background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: 0.5s;
+	}
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
 	@include card(10px, black, white);
 
 	h2 {
-		font-size: 25px;
+		font-size: 28px;
 		margin-bottom: 10px;
 		text-align: center;
+		z-index: 99;
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+		color: white;
 	}
 }
 .gradeContainer {
@@ -55,19 +92,4 @@
 			}
 		}
 	}
-}
-.car-container a {
-	color: white;
-	margin: 0 auto;
-	display: block;
-	max-width: 100px;
-	text-align: center;
-	padding: 7px;
-	min-width: 100px;
-	text-decoration: none;
-	transition: 0.3s;
-	@include card(5px, rgba(0, 0, 0, 0.082), rgb(2, 71, 117));
-}
-.car-container a:hover {
-	background: rgb(1, 36, 59);
 }

@@ -1,0 +1,10 @@
+.panel {
+	min-width: 27%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	@media (max-width: 767px) {
+		min-width: 10%;
+	}
+}

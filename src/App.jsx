@@ -1,13 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
 
 import DetailPage from './pages/detail/detail';
-import HomePage from './pages/home/home';
+import { Characters, Comics, Events, Series, Stories } from './pages';
 
 function App() {
 	return (
 		<Routes>
-			<Route path='/' element={<HomePage />} />
-			<Route path='/student/:id' element={<DetailPage />} />
+			<Route path='/' exact element={<Characters />} />
+
+			<Route path='/events' element={<Events />} />
+			<Route path='/stories' element={<Stories />} />
+			<Route path='/comics' element={<Comics />} />
+			<Route path='/series' element={<Series />} />
+
+			<Route path='/detail/:id' element={<DetailPage />} />
 		</Routes>
 	);
 }

@@ -3,11 +3,15 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Layout from '../../components/layout/layout';
 import Spinner from '../../components/spinner/spinner';
-import getGender from '../../utils/getGenter';
-import getApi from '../../utils/getApi';
+import useAxios from '@/hooks/useAxios';
 
 import './detail.scss';
 
+/**
+ * Renders the DetailPage component.
+ *
+ * @return {JSX.Element} The DetailPage component.
+ */
 export default function DetailPage() {
 	const { id } = useParams();
 	const [student, setStudent] = useState(undefined);
@@ -18,18 +22,24 @@ export default function DetailPage() {
 	const returnPage = () => {
 		navigate('/', { replace: true });
 	};
-	useEffect(() => {
-		getApi('/student', id).then((res) => {
-			if (res.status === 200) {
-				setStudent(res.data[0]);
-				setTitle(res.data[0].Name);
-			}
-		});
-	}, []);
+	const { response, error, loading } = useAxios(`characters/${id}`);
+	console.log(response);
 
+	useEffect(() => {
+		if (response) {
+			if (response.status === 200 && response.code === 'Ok') {
+				const {
+					data: { results },
+				} = response;
+				console.log(results[0]);
+				setTitle(`${results[0].name} | Marvel App`);
+				//setStudent(response.data.results[0]);
+			}
+		}
+	}, [response]);
 	return (
 		<Layout title={title}>
-			{student === undefined ? (
+			{/* {student === undefined ? (
 				<Spinner />
 			) : (
 				<motion.div
@@ -89,7 +99,7 @@ export default function DetailPage() {
 						<Link to='/'> Return </Link>
 					</div>
 				</motion.div>
-			)}
+			)} */}
 		</Layout>
 	);
 }
