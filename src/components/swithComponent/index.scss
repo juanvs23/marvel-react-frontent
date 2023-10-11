@@ -1,4 +1,12 @@
 .switch {
+	&.dark-active {
+		label {
+			background: black;
+			div#star {
+				left: 57px;
+			}
+		}
+	}
 	toggle_checkbox {
 		display: none;
 	}

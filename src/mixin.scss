@@ -1,5 +1,32 @@
 @mixin card($radio, $colorShadow, $background) {
-  border-radius: $radio;
-  box-shadow: 0 3px 6px $colorShadow;
-  background: $background;
+	border-radius: $radio;
+	box-shadow: 0 3px 6px $colorShadow;
+	background: $background;
+}
+@mixin button(
+	$radio: '30px',
+	$fontSize: '20px',
+	$fontWeight: '700',
+	$background: 'black',
+	$color: 'white',
+	$padding: '10px'
+) {
+	border: none;
+	border-radius: $radio;
+	background: $background;
+	color: $color;
+	font-size: $fontSize;
+	font-weight: $fontWeight;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	width: 100%;
+	padding: $padding;
+	font-weight: $fontWeight;
+	transition: 0.5s;
+	appearance: none;
+	&:hover {
+		background: $color;
+		color: $background;
+	}
 }

@@ -4,17 +4,58 @@
 	@include card(10px, rgba(0, 0, 0, 0.322), white);
 	color: #333;
 	min-height: 70vh;
-	min-width: 90vw;
+	width: 90vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .datails {
-	width: 95%;
+	display: flex;
+	justify-content: end;
+	position: absolute;
+	bottom: 0;
+	width: auto;
+	right: 31px;
+	font-size: 3rem;
 	a {
 		text-decoration: none;
 		font-weight: 700;
 		color: #333;
+		transition: 0.5s;
+		&:hover {
+			color: rgb(236, 29, 36);
+		}
 	}
+	@media (max-width: 767px) {
+		bottom: -103px;
+	}
+}
+.detail-content {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 15px;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: 767px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+.dark .detail-container {
+	@include card(10px, rgba(17, 17, 17, 0.712), #161616);
+	color: #fff;
+}
+.dark {
+	.datails {
+		a {
+			color: #fff;
+			&:hover {
+				color: rgb(236, 29, 36);
+			}
+		}
+	}
+}
+.detail-image img {
+	width: 100%;
+	max-width: 633px;
 }

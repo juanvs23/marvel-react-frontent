@@ -1,95 +1,124 @@
 @import '../../mixin.scss';
-.car-container {
-	margin: 10px;
-	overflow: hidden;
-	min-height: 185px;
-	position: relative;
-	&::before {
-		content: '';
-		width: 100%;
-		position: absolute;
-		display: block;
-		height: 100%;
-		top: 0;
-		left: 0;
-		background-color: rgba(0, 0, 0, 0.3);
-		z-index: 3;
-	}
-	a {
+.card {
+	.car-container {
+		margin: 10px;
+		overflow: hidden;
+		min-height: 185px;
 		position: relative;
-		width: 100%;
-		height: 100%;
+		z-index: 9999;
+		&.comics {
+			.img-background {
+				aspect-ratio: 178/273;
+			}
+		}
+		&.series {
+			aspect-ratio: 1/1;
+		}
+		.card-content {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transition: 0.5s;
+			top: 0;
+			left: 0;
+		}
+		.button-container {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			transition: 0.5s;
+			overflow: hidden;
+			inset: 0;
+			left: 0;
+			z-index: 99999;
+			transition: 0.7s;
+			.button-content {
+				display: flex;
+				flex-direction: column;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				bottom: 10px;
+				align-items: center;
+				justify-content: center;
+				height: auto;
+				gap: 10px;
+				transition: 0.7s;
+			}
+			h2 {
+				padding-bottom: 15px;
+				display: block;
+				position: relative;
+				width: 100%;
+				padding-bottom: 10px;
+				margin: 0;
+			}
+			.button {
+				display: block;
+				position: relative;
+				max-width: 250px;
+				margin: auto;
+				height: auto;
+				z-index: 99999;
+				@include button(30px, 18px, 700, #ec1d24, white, 10px);
+				transition: 0.5s;
+				opacity: 0;
+			}
+		}
+		.overlay {
+			content: '';
+			width: 100%;
+			position: absolute;
+			display: block;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, 0.3);
+			z-index: 3;
+		}
+		a {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		&.characters {
+			aspect-ratio: 211/179;
+		}
+		.img-background {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: 0.5s;
+		}
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		@include card(10px, black, white);
+
+		h2 {
+			font-size: clamp(1.125rem, 0.9913rem + 0.6686vw, 1.5625rem);
+			margin-bottom: 10px;
+			padding: 20px;
+			text-align: center;
+			z-index: 99;
+			position: absolute;
+			bottom: 10px;
+			width: 100%;
+			color: white;
+		}
 	}
-	&.characters {
-		aspect-ratio: 211/179;
+
+	&:hover {
+		.button-content {
+			.button {
+				opacity: 1;
+			}
+		}
 	}
 	&:hover {
 		.img-background {
 			transform: scale(1.5) rotate(26deg);
-		}
-	}
-	.img-background {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: 0.5s;
-	}
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	@include card(10px, black, white);
-
-	h2 {
-		font-size: 28px;
-		margin-bottom: 10px;
-		text-align: center;
-		z-index: 99;
-		position: absolute;
-		bottom: 10px;
-		width: 100%;
-		color: white;
-	}
-}
-.gradeContainer {
-	transition: 0.5s;
-	.grade {
-		text-align: center;
-		margin-bottom: 10px;
-		font-size: 23px;
-		font-weight: 700;
-		padding-top: 0;
-		transition: 0.3s;
-	}
-	button {
-		appearance: none;
-		background: transparent;
-		border: none;
-		font-size: 20px;
-		cursor: pointer;
-		display: block;
-		width: 100%;
-		padding: 10px;
-		font-weight: 700;
-		position: relative;
-		&:after {
-			content: '';
-			transition: 0.5s;
-			width: 10px;
-			height: 10px;
-			border-bottom: 1px solid black;
-			display: block;
-			border-right: 1px solid black;
-			transform: rotate(45deg);
-			position: absolute;
-			right: 15px;
-			top: 12px;
-		}
-		&.active {
-			&:after {
-				transform: rotate(223deg);
-				top: 15px;
-			}
 		}
 	}
 }

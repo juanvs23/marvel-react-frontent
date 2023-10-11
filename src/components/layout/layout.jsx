@@ -17,11 +17,11 @@ export default function Layout({ children, title }) {
 			<div className={`iso-body ${menuActive} ${isDark}`}>
 				<div className='body-wrapper'>
 					<Header title={title} />
-					<main>{children}</main>
+					<main className='container'>{children}</main>
 					<Footer />
 				</div>
-				<LateralMenu />
 			</div>
+			<LateralMenu />
 		</>
 	);
 }

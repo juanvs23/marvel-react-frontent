@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './card.scss';
-import gradeColor from '../../utils/gradeColor';
 import utils from '@/utils';
+import Atropos from 'atropos/react';
+import TransitionLink from '../transitionLink/TransitionLink';
 
 export default function CardComponent({ cardData }) {
 	const [open, setOpen] = useState(false);
@@ -14,17 +14,7 @@ export default function CardComponent({ cardData }) {
 		resourceURI,
 		type,
 	} = cardData;
-	console.log(path);
-	/* const showGrade = open ? (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 0.3 }}
-			className='grade'
-			style={{ color: gradeColor(grade.toFixed(2)) }}>
-			{grade.toFixed(2)}
-		</motion.div>
-	) : null; */
+
 	return (
 		<motion.article
 			initial={{ y: 200, opacity: 0 }}
@@ -32,14 +22,22 @@ export default function CardComponent({ cardData }) {
 			transition={{ duration: 1 }}
 			className='card'>
 			<div className={`car-container ${type}`}>
-				<Link to={`/detail/${id}`}>
-					<img
-						src={`${utils.changehttpTohttps(path)}.${extension}`}
-						alt={title}
-						className='img-background'
-					/>
-					<h2>{title}</h2>
-				</Link>
+				<TransitionLink className='' url={`/detail/${type}/${id}`}>
+					<div className='card-content'>
+						<div className='overlay'></div>
+						<img
+							src={`${utils.changehttpTohttps(path)}.${extension}`}
+							alt={title}
+							className='img-background'
+						/>
+						<div className='button-container'>
+							<div className='button-content'>
+								<h2>{title}</h2>
+								<div className='button'>See More</div>
+							</div>
+						</div>
+					</div>
+				</TransitionLink>
 			</div>
 		</motion.article>
 	);
