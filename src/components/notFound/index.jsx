@@ -5,7 +5,7 @@ import { setTitle } from '@/lib/redux';
 import { useDispatch } from 'react-redux';
 import TransitionLink from '../transitionLink/TransitionLink';
 import './index.scss';
-import NotFoundImage from './not-found.svg';
+import NotFoundImage from '@/public/img/not-found.svg';
 
 function NotFound() {
 	const dispath = useDispatch();

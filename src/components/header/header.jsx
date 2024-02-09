@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 
-import HeaderLogo from './header.svg';
+import HeaderLogo from '@/public/img/header-img.svg';
 import './header.scss';
 
 import { Panel } from './../panel/panelComponent';
 import TransitionLink from '../transitionLink/TransitionLink';
 import { Link } from 'react-router-dom';
+import { url } from '../../constants';
 export default function Header() {
 	const { selectedOption, input } = useSelector((state) => state.select);
 	const { title } = useSelector((state) => state.userInterface);
