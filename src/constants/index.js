@@ -31,3 +31,7 @@ export const userInterfaceOptions ={
     },
     title:'Home'
 }
+export const url =
+import.meta.env.MODE === 'development'
+    ? import.meta.env.VITE_DEV_HOME_URL
+    : import.meta.env.VITE_PROD_HOME_URL;
