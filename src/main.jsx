@@ -11,6 +11,10 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from '@/lib/redux/store';
 
+const url =
+		import.meta.env.MODE === 'development'
+			? import.meta.env.VITE_DEV_HOME_URL
+			: import.meta.env.VITE_PROD_HOME_URL;
 const urlBaseName = () => {
 	const url =
 		import.meta.env.MODE === 'development'
@@ -21,7 +25,7 @@ const urlBaseName = () => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<Provider store={store}>
-		<BrowserRouter basename='/'>
+		<BrowserRouter basename={url} >
 			{urlBaseName()}
 			<App />
 		</BrowserRouter>
