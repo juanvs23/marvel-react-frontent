@@ -16,13 +16,12 @@ const urlBaseName = () => {
 		import.meta.env.MODE === 'development'
 			? import.meta.env.VITE_DEV_HOME_URL
 			: import.meta.env.VITE_PROD_HOME_URL;
-	console.log(url);
+	return `${url}`;
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<Provider store={store}>
-		<BrowserRouter basename='/'>
-			{urlBaseName()}
+		<BrowserRouter basename={urlBaseName()}>
 			<App />
 		</BrowserRouter>
 	</Provider>
